@@ -1,0 +1,27 @@
+.DS_Store
+node_modules/
+*.log
+
+# Plugin-installed skills (symlinks to ~/.agents/skills/*) — not owned here
+assistant-ui
+cloud
+diagnose
+grill-me
+grill-with-docs
+improve-claude-md
+improve-codebase-architecture
+langsmith-dataset
+langsmith-evaluator
+langsmith-trace
+primitives
+runtime
+setup
+streaming
+supabase
+supabase-postgres-best-practices
+thread-list
+tool-ui
+tools
+triage
+update
+write-a-skill
