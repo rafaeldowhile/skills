@@ -1,6 +1,16 @@
 ---
 name: engineering-principles
-description: Apply core software-engineering principles whenever writing, reviewing, or refactoring code. Study the code first (Chesterton's Fence), pick one canonical source per fact (Single Source of Truth), keep code that operates on the same data close together (Locality of Behavior), drop speculative complexity (YAGNI), favor simple over clever (KISS), narrow types at boundaries (Make Illegal States Unrepresentable + Parse Don't Validate), leave the area cleaner than you found it (Boy Scout Rule). Use on every code task — from writing new modules to consolidating overengineered flows. Triggers: any code-writing or code-review work, especially when the user mentions "overengineered", "consistent code", "one source of truth", "let's clean this up", or shows signs of fallback chains, merge spreads, `any` casts, or scattered duplicated lookups.
+description: >-
+  Apply core software-engineering principles whenever writing, reviewing, or refactoring code.
+  Study the code first (Chesterton's Fence), pick one canonical source per fact (Single Source of Truth),
+  keep code that operates on the same data close together (Locality of Behavior),
+  drop speculative complexity (YAGNI), favor simple over clever (KISS),
+  narrow types at boundaries (Make Illegal States Unrepresentable + Parse Don't Validate),
+  leave the area cleaner than you found it (Boy Scout Rule).
+  Use on every code task — from writing new modules to consolidating overengineered flows.
+  Triggers — any code-writing or code-review work, especially when the user mentions
+  "overengineered", "consistent code", "one source of truth", "let's clean this up",
+  or shows signs of fallback chains, merge spreads, `any` casts, or scattered duplicated lookups.
 ---
 
 # Engineering Principles
