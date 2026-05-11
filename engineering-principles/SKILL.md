@@ -97,7 +97,7 @@ Specific situations where the wins are most visible:
 - Code review: check each principle as a lens
 - Bug fix: ask whether the bug exists because a principle was violated (it often does)
 - User says: "overengineered", "consistent code", "one source of truth", "let's clean this up", "this is messy"
-- You see: fallback chains (`a ?? b ?? c ?? d` across unrelated sources), merge spreads (`{ ...x, ...y }`), helpers named `mergeFoo` + `fooFromMerged` + `pickFoo`, `any` casts at module boundaries, scattered duplicated lookups, "for back-compat" comments past their grace period
+- You see: fallback chains (`a ?? b ?? c ?? d` across unrelated sources), merge spreads (`{ ...x, ...y }`), a cluster of helpers that do variants of the same lookup (merge → unmerge → pick), `any` casts at module boundaries, scattered duplicated lookups, "for back-compat" comments past their grace period
 
 ## When NOT to Strip
 
@@ -174,9 +174,9 @@ Each step must leave the codebase compilable.
 | `{ ...src1, ...src2, ...src3 }` | SSOT | Pick one source, drop the others |
 | `a ?? b ?? c ?? d` across unrelated sources | SSOT | Same |
 | `as any` / `as unknown as X` at module boundaries | Make Illegal States Unrepresentable | Type the boundary with a narrow interface |
-| `mergeFoo` + `fooFromMerged` + `pickFoo` exports doing variants of the same lookup | Locality + KISS | Collapse to one typed reader |
+| Cluster of helpers doing variants of the same lookup (merge → unmerge → pick) | Locality + KISS | Collapse to one typed reader |
 | "Legacy path for back-compat" comments past their grace period | YAGNI | Finish the migration or scope it explicitly |
-| Reader tries `runtime.context.x` AND `runtime.configurable.x` AND `runtime.config.configurable.x` | SSOT + KISS | Commit to one channel |
+| Reader tries multiple paths/channels to find the same value | SSOT + KISS | Commit to one channel |
 | Optional fields nobody sets, fallbacks nobody exercises | YAGNI | Drop |
 | Same lookup duplicated in 4 modules | Locality | Extract |
 | Stale comments mentioning old architecture | Boy Scout | Strip in the same diff |
